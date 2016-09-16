@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sticky-Blog</title>
+        <style type="text/css">
+
+            html, body {
+                margin: 0;
+                color: #999;
+                background-color: #222;
+            }
+
+            .blog {
+                background-color: #555;
+                padding: 10px;
+                border-radius: 10px;
+            }
+
+            .blog p {
+                text-align: center;
+            }
+
+            a {
+                text-decoration: none;
+                color: #fff;
+            }
+
+            .error {
+                color: red;
+            }
+
+            h1,h2,h3,h4 {
+                color: #fff;
+            }
+
+            textarea {
+                width: 500px;
+                height: 300px;
+            }
+
+            #logo {
+                text-align: center;
+                font-size: +40px;
+                background-color: #555;
+            }
+
+            form {
+                background-color: #555;
+                padding: 10px 10px 10px 200px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="logo">
+            <a href="/">Sticky-Blog</a>
+        </h1>
+
+        <div class="nav">
+        <a href="/blog">Latest Blogs</a>
+        <a href="/newpost">New Post</a>
+        </div>
+
+        {% block content %}
+        {% endblock %}
+
+        <hr>
+        {% for blog in blogs %}
+            <div class="blog">
+                <a href="../blog/{{blog.key().id()}}"><h3 class="blogtitle">< {{blog.title}} ></h3></a>
+                <p class="blog-post">{{blog.blog}}</p>
+            </div>
+
+            <hr>
+        {% endfor %}
+    </body>
+</html>
